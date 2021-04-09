@@ -661,19 +661,6 @@ Don't build support for Elliptic Curves.
 
 Don't build support for binary Elliptic Curves
 
-### enable-ec_nistp_64_gcc_128
-
-Enable support for optimised implementations of some commonly used NIST
-elliptic curves.
-
-This option is only supported on platforms:
-
- - with little-endian storage of non-byte types
- - that tolerate misaligned memory references
- - where the compiler:
-   - supports the non-standard type `__uint128_t`
-   - defines the built-in macro `__SIZEOF_INT128__`
-
 ### enable-egd
 
 Build support for gathering entropy from the Entropy Gathering Daemon (EGD).

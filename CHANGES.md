@@ -23,6 +23,14 @@ OpenSSL 3.0
 
 ### Changes between 1.1.1 and 3.0 [xx XXX xxxx]
 
+ * Deprecated Configure option ec_nistp_64_gcc_128.  Configure now
+   automatically detects if the compiler supports 128-bit integers.
+   If the 128-bit integers are supported, then the code that requires
+   128-bit integers is automatically enabled. This affects some of the
+   elliptic curves.
+
+   *Amitay Isaacs*
+
  * OpenSSL includes a cryptographic module that is intended to be FIPS 140-2
    validated. The module is implemented as an OpenSSL provider, the so-called
    FIPS provider. A list of all changes related to the FIPS provider would go

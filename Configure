@@ -507,6 +507,7 @@ my %deprecated_disablables = (
     "ripemd" => "rmd160",
     "ui" => "ui-console",
     "heartbeats" => undef,
+    "ec_nistp_64_gcc_128" => undef,
     );
 
 # All of the following are disabled by default:
@@ -519,7 +520,6 @@ our %disabled = ( # "what"         => "comment"
                   "crypto-mdebug"       => "default",
                   "crypto-mdebug-backtrace" => "default",
                   "devcryptoeng"        => "default",
-                  "ec_nistp_64_gcc_128" => "default",
                   "egd"                 => "default",
                   "external-tests"      => "default",
                   "fuzz-afl"            => "default",
