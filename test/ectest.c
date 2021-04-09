@@ -1739,7 +1739,7 @@ int are_ec_nids_compatible(int n1d, int n2d)
         case NID_wap_wsg_idm_ecid_wtls7:
             ret = (n2d == NID_secp160r2 || n2d == NID_wap_wsg_idm_ecid_wtls7);
             break;
-#ifdef OPENSSL_NO_EC_NISTP_64_GCC_128
+#ifndef UINT128_MAX
         case NID_secp224r1:
         case NID_wap_wsg_idm_ecid_wtls12:
             ret = (n2d == NID_secp224r1 || n2d == NID_wap_wsg_idm_ecid_wtls12);
@@ -1752,7 +1752,7 @@ int are_ec_nids_compatible(int n1d, int n2d)
         case NID_wap_wsg_idm_ecid_wtls12:
             ret = (n2d == NID_secp224r1);
             break;
-#endif /* def(OPENSSL_NO_EC_NISTP_64_GCC_128) */
+#endif /* def(UINT128_MAX) */
 
         default:
             ret = (n1d == n2d);

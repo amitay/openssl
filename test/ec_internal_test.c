@@ -188,7 +188,7 @@ static int field_tests_default(int n)
     return ret;
 }
 
-#ifndef OPENSSL_NO_EC_NISTP_64_GCC_128
+#ifdef UINT128_MAX
 /*
  * Tests a point known to cause an incorrect underflow in an old version of
  * ecp_nist521.c
@@ -372,7 +372,7 @@ int setup_tests(void)
     ADD_TEST(field_tests_ec2_simple);
 #endif
     ADD_ALL_TESTS(field_tests_default, crv_len);
-#ifndef OPENSSL_NO_EC_NISTP_64_GCC_128
+#ifdef UINT128_MAX
     ADD_TEST(underflow_test);
 #endif
     ADD_TEST(decoded_flag_test);

@@ -779,7 +779,7 @@ EC_GROUP *EC_GROUP_new_from_ecparameters(const ECPARAMETERS *params)
          */
         EC_GROUP *named_group = NULL;
 
-#ifndef OPENSSL_NO_EC_NISTP_64_GCC_128
+#ifdef UINT128_MAX
         /*
          * NID_wap_wsg_idm_ecid_wtls12 and NID_secp224r1 are both aliases for
          * the same curve, we prefer the SECP nid when matching explicit
@@ -787,7 +787,7 @@ EC_GROUP *EC_GROUP_new_from_ecparameters(const ECPARAMETERS *params)
          */
         if (curve_name == NID_wap_wsg_idm_ecid_wtls12)
             curve_name = NID_secp224r1;
-#endif /* !def(OPENSSL_NO_EC_NISTP_64_GCC_128) */
+#endif /* !def(UINT128_MAX) */
 
         if ((named_group = EC_GROUP_new_by_curve_name(curve_name)) == NULL) {
             ERR_raise(ERR_LIB_EC, ERR_R_EC_LIB);

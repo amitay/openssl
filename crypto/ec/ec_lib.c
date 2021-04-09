@@ -96,7 +96,7 @@ void EC_pre_comp_free(EC_GROUP *group)
         EC_nistz256_pre_comp_free(group->pre_comp.nistz256);
 #endif
         break;
-#ifndef OPENSSL_NO_EC_NISTP_64_GCC_128
+#ifdef UINT128_MAX
     case PCT_nistp224:
         EC_nistp224_pre_comp_free(group->pre_comp.nistp224);
         break;
@@ -185,7 +185,7 @@ int EC_GROUP_copy(EC_GROUP *dest, const EC_GROUP *src)
         dest->pre_comp.nistz256 = EC_nistz256_pre_comp_dup(src->pre_comp.nistz256);
 #endif
         break;
-#ifndef OPENSSL_NO_EC_NISTP_64_GCC_128
+#ifdef UINT128_MAX
     case PCT_nistp224:
         dest->pre_comp.nistp224 = EC_nistp224_pre_comp_dup(src->pre_comp.nistp224);
         break;
@@ -1424,7 +1424,7 @@ static EC_GROUP *ec_group_explicit_to_named(const EC_GROUP *group,
          * parameters with one created from a named group.
          */
 
-#ifndef OPENSSL_NO_EC_NISTP_64_GCC_128
+#ifdef UINT128_MAX
         /*
          * NID_wap_wsg_idm_ecid_wtls12 and NID_secp224r1 are both aliases for
          * the same curve, we prefer the SECP nid when matching explicit
@@ -1432,7 +1432,7 @@ static EC_GROUP *ec_group_explicit_to_named(const EC_GROUP *group,
          */
         if (curve_name_nid == NID_wap_wsg_idm_ecid_wtls12)
             curve_name_nid = NID_secp224r1;
-#endif /* !def(OPENSSL_NO_EC_NISTP_64_GCC_128) */
+#endif /* !def(UINT128_MAX) */
 
         ret_group = EC_GROUP_new_by_curve_name_ex(libctx, propq, curve_name_nid);
         if (ret_group == NULL)

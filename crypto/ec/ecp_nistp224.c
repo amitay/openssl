@@ -45,9 +45,10 @@
 
 #include "internal/numbers.h"
 
-#ifndef INT128_MAX
-# error "Your compiler doesn't appear to support 128-bit integer types"
-#endif
+#ifndef UINT128_MAX
+/* We don't have support for 128-bit ints, so do nothing here */
+NON_EMPTY_TRANSLATION_UNIT
+#else
 
 typedef uint8_t u8;
 typedef uint64_t u64;
@@ -1746,3 +1747,4 @@ int ossl_ec_GFp_nistp224_have_precompute_mult(const EC_GROUP *group)
 {
     return HAVEPRECOMP(group, nistp224);
 }
+#endif

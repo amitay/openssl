@@ -126,7 +126,7 @@ OSSL_DEPRECATEDIN_3_0 const EC_METHOD *EC_GFp_mont_method(void);
  */
 OSSL_DEPRECATEDIN_3_0 const EC_METHOD *EC_GFp_nist_method(void);
 
-#   ifndef OPENSSL_NO_EC_NISTP_64_GCC_128
+#   ifdef UINT128_MAX
 /** Returns 64-bit optimized methods for nistp224
  *  \return  EC_METHOD object
  */
@@ -141,7 +141,7 @@ OSSL_DEPRECATEDIN_3_0 const EC_METHOD *EC_GFp_nistp256_method(void);
  *  \return  EC_METHOD object
  */
 OSSL_DEPRECATEDIN_3_0 const EC_METHOD *EC_GFp_nistp521_method(void);
-#   endif /* OPENSSL_NO_EC_NISTP_64_GCC_128 */
+#   endif /* UINT128_MAX */
 
 #   ifndef OPENSSL_NO_EC2M
 /********************************************************************/

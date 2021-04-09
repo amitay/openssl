@@ -31,6 +31,13 @@
 
 #include <openssl/opensslconf.h>
 
+#include "internal/numbers.h"
+
+#ifndef UINT128_MAX
+/* We don't have support for 128-bit ints, so do nothing here */
+NON_EMPTY_TRANSLATION_UNIT
+#else
+
 /*
  * Common utility functions for ecp_nistp224.c, ecp_nistp256.c, ecp_nistp521.c.
  */
@@ -224,3 +231,4 @@ void ossl_ec_GFp_nistp_recode_scalar_bits(unsigned char *sign,
     *sign = s & 1;
     *digit = d;
 }
+#endif
