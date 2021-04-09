@@ -27,7 +27,7 @@ to the `libFuzzer` library file while configuring; this is represented as
             -DPEDANTIC enable-asan enable-ubsan no-shared \
             -DFUZZING_BUILD_MODE_UNSAFE_FOR_PRODUCTION \
             -fsanitize=fuzzer-no-link \
-            enable-ec_nistp_64_gcc_128 -fno-sanitize=alignment \
+            -fno-sanitize=alignment \
             enable-weak-ssl-ciphers enable-rc5 enable-md2 \
             enable-ssl3 enable-ssl3-method enable-nextprotoneg \
             --debug
@@ -65,7 +65,7 @@ prebuilt fuzzer library. This is represented as `$PATH_TO_LIBFUZZER_DIR` below.
             -DPEDANTIC enable-asan enable-ubsan no-shared \
             -DFUZZING_BUILD_MODE_UNSAFE_FOR_PRODUCTION \
             -fsanitize=fuzzer-no-link \
-            enable-ec_nistp_64_gcc_128 -fno-sanitize=alignment \
+            -fno-sanitize=alignment \
             enable-weak-ssl-ciphers enable-rc5 enable-md2 \
             enable-ssl3 enable-ssl3-method enable-nextprotoneg \
             --debug
@@ -81,7 +81,7 @@ Configure for fuzzing:
     CC=afl-clang-fast ./config enable-fuzz-afl no-shared no-module \
         -DPEDANTIC enable-tls1_3 enable-weak-ssl-ciphers enable-rc5 \
         enable-md2 enable-ssl3 enable-ssl3-method enable-nextprotoneg \
-        enable-ec_nistp_64_gcc_128 -fno-sanitize=alignment \
+        -fno-sanitize=alignment \
         --debug
     make clean
     make
